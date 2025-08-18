@@ -1,0 +1,23 @@
+﻿@using Product_Management.ViewModel
+@model CategoryViewModel
+@{
+    ViewData["Title"] = "Create Category";
+}
+<h1 class="mb-4 text-primary">Thêm mới danh mục sản phẩm</h1>
+
+<form asp-action="Create" asp-controller="Category" method="post" class="w-50 mx-auto">
+    <div class="mb-3">
+        <label class="form-label fw-bold text-dark">Tên danh mục <span class="text-danger">*</span></label>
+        <input asp-for="Request.Name" class="form-control" type="text" placeholder="Nhập tên danh mục..." required />
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+        <a class="btn btn-secondary" asp-action="Index" asp-controller="Category">
+            <i class="fa-solid fa-arrow-left me-1"></i> Quay lại
+        </a>
+
+        <button class="btn btn-success" type="submit">
+            <i class="fa-solid fa-check me-1"></i> Đồng ý
+        </button>
+    </div>
+</form>

@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Category";
+}
+
+@model Product_Management.ViewModel.CategoryViewModel
+
+<h1 class="mb-4 text-primary">Danh sách danh mục sản phẩm</h1>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <form asp-controller="Category" asp-action="Index" method="post" class="input-group w-50">
+        <input type="text" class="form-control" name="keyword" placeholder="Nhập từ khóa cần tìm...">
+        <button class="btn btn-outline-success" type="submit" title="Tìm kiếm">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </form>
+
+    <button data-bs-toggle="modal" data-bs-target="#createModal" class="btn btn-primary">
+        <i class="fa-solid fa-plus me-1"></i> Thêm
+    </button>
+</div>
+
+
+<!-- Modal List -->
+<partial name="_List" model="@Model" />
+
+
+<!-- Modal Create -->
+<partial name="_Create" model="@Model"/>
+
+<!-- Modal Update & Delete -->
+@if (Model.Categories != null)
+{
+    foreach(var cat in Model.Categories)
+    {
+        Model.Response = cat;
+        <partial name="_Update" model="@Model" />
+        <partial name="_Delete" model="@Model" />
+    }
+}
+
+
+

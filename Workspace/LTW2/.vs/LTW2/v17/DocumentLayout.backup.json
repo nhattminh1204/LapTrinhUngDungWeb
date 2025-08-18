@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\controllers\\mathcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\controllers\\mathcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\views\\math\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\views\\math\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\views\\math\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\views\\math\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|d:\\husc\\web application programming\\workspace\\ltw2\\test01\\models\\mathresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FCFEEE32-5B3D-4E9B-B54F-D9565AE2C2A0}|Test01\\Day01.csproj|solutionrelative:test01\\models\\mathresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 228,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Test01\\Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Test01\\Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-24T12:44:10.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Test01\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Test01\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-24T12:44:09.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Result.cshtml",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Math\\Result.cshtml",
+              "RelativeDocumentMoniker": "Test01\\Views\\Math\\Result.cshtml",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Math\\Result.cshtml",
+              "RelativeToolTip": "Test01\\Views\\Math\\Result.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-24T11:11:16.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MathController.cs",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Controllers\\MathController.cs",
+              "RelativeDocumentMoniker": "Test01\\Controllers\\MathController.cs",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Controllers\\MathController.cs",
+              "RelativeToolTip": "Test01\\Controllers\\MathController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T11:27:00.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Math\\Index.cshtml",
+              "RelativeDocumentMoniker": "Test01\\Views\\Math\\Index.cshtml",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Views\\Math\\Index.cshtml",
+              "RelativeToolTip": "Test01\\Views\\Math\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T11:28:05.229Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 172,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Program.cs",
+              "RelativeDocumentMoniker": "Test01\\Program.cs",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Program.cs",
+              "RelativeToolTip": "Test01\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T11:21:28.003Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MathResult.cs",
+              "DocumentMoniker": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Models\\MathResult.cs",
+              "RelativeDocumentMoniker": "Test01\\Models\\MathResult.cs",
+              "ToolTip": "D:\\HUSC\\Web Application Programming\\Workspace\\LTW2\\Test01\\Models\\MathResult.cs",
+              "RelativeToolTip": "Test01\\Models\\MathResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-24T10:45:06.115Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

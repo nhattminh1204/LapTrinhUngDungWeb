@@ -1,0 +1,76 @@
+﻿@using Product_Management.ViewModel
+@model ProductViewModel
+
+
+<table class="table table-hover table-bordered">
+    <tr class="table-active text-center">
+        <th>STT</th>
+        <th>Id</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá</th>
+        <th>Số lượng</th>
+        <th>Hình ảnh</th>
+        <th>Danh mục</th>
+        <th>Thao tác</th>
+    </tr>
+    @if (Model.Products != null && Model.Products.Count > 0)
+    {
+        int index = (Model.PageIndex - 1) * Model.PageSize;
+        foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@(++index)</td>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.Quantity</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(product.image))
+                    {
+                        <img src="@product.image" style="width:100px" />
+                    }
+                </td>
+                <td>@product.CategoryName</td>
+                <td class="d-flex justify-content-center align-items-center gap-2">
+                    <button data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-info" title="Chỉnh sửa">
+                        <i class="fa-solid fa-pen text-white"></i>
+                    </button>
+                    <button data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger" title="Xóa">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="8" class="text-center text-danger">Không có sản phẩm nào!</td>
+        </tr>
+    }
+</table>
+
+<div class="d-flex justify-content-end">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item @((Model.PageIndex == 1) ? "disabled" : "")">
+                <a class="page-link" aria-label="Previous">
+                    <span onclick="onPaging(@(Model.PageIndex-1))" aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="page-item @((Model.PageIndex == i) ? "active" : "")">
+                    <a onclick="onPaging(@i)" class="page-link">@i</a>
+                </li>
+            }
+
+            <li class="page-item @((Model.PageIndex == Model.PageCount) ? "disabled" : "")">
+                <a class="page-link " aria-label="Next">
+                    <span onclick="onPaging(@(Model.PageIndex + 1))" aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Math";
+}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow-lg p-4" style="width: 100%; max-width: 500px;">
+        <h2 class="text-center text-primary mb-4"><strong>MỘT SỐ PHÉP TOÁN CƠ BẢN</strong></h2>
+
+        <form method="get" asp-action="Calculate">
+            <!-- Input a -->
+            <div class="mb-3">
+                <label for="a" class="form-label">Nhập a:</label>
+                <input type="number" class="form-control" id="a" name="a" placeholder="Nhập số a..." required />
+            </div>
+
+            <!-- Input b -->
+            <div class="mb-3">
+                <label for="b" class="form-label">Nhập b:</label>
+                <input type="number" class="form-control" id="b" name="b" placeholder="Nhập số b..." required />
+            </div>
+
+            <!-- Button -->
+            <div class="text-center mb-2">
+                <label class="form-label">Chọn phép toán:</label>
+                <div class="btn-group w-100" role="group">
+                    <button type="submit" class="btn btn-outline-primary" name="op" value="add">+</button>
+                    <button type="submit" class="btn btn-outline-primary" name="op" value="sub">−</button>
+                    <button type="submit" class="btn btn-outline-primary" name="op" value="mul">×</button>
+                    <button type="submit" class="btn btn-outline-primary" name="op" value="div">÷</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model Test01.Models.MathResult
+
+@{
+    ViewData["Title"] = "Kết quả";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        @if (Model.isValid)
+        {
+            <div class="alert alert-success shadow-sm p-4">
+                <h4 class="mb-3">✅ Kết quả:</h4>
+                <p class="fs-4">@Model.message</p>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger shadow-sm p-4">
+                <h4 class="mb-3">❌ Lỗi:</h4>
+                <p class="fs-5">@Model.ErrorMessage</p>
+            </div>
+        }
+
+        <a asp-controller="Math" asp-action="Index" class="btn btn-outline-primary mt-4">
+            <i class="fa-solid fa-arrow-left me-1"></i> Quay lại trang nhập
+        </a>
+
+    </div>
+</div>
