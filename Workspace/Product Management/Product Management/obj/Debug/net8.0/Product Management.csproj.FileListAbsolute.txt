@@ -169,3 +169,4 @@ D:\HUSC\Web Application Programming\Workspace\Product Management\Product Managem
 D:\HUSC\Web Application Programming\Workspace\Product Management\Product Management\obj\Debug\net8.0\Product Management.pdb
 D:\HUSC\Web Application Programming\Workspace\Product Management\Product Management\obj\Debug\net8.0\Product Management.genruntimeconfig.cache
 D:\HUSC\Web Application Programming\Workspace\Product Management\Product Management\obj\Debug\net8.0\ref\Product Management.dll
+D:\HUSC\Web Application Programming\Workspace\Product Management\Product Management\obj\Debug\net8.0\Product Management.sourcelink.json

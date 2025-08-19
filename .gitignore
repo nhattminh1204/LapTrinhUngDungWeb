@@ -1,0 +1,28 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+[Bb]uild/
+[Ll]og/
+
+# Rider
+.idea/
+
+# Others
+*.db
+*.db-shm
+*.db-wal
+*.cache
+*.vsidx
+*.pdb
+*.exe
+
+# wwwroot generated
+wwwroot/**/*.gz
+wwwroot/**/*.br

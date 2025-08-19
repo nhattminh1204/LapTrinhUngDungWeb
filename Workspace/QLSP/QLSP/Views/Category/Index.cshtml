@@ -1,0 +1,154 @@
+﻿@using QLSP.Controllers
+@model CategoryViewModel
+
+<h1>Danh sách Danh mục Sản phẩm</h1>
+<div class="d-flex justify-content-end mb-3">
+    @*<a asp-action="Create" asp-controller="Category" class="btn btn-success me-1"><i class="fa-solid fa-plus"></i> Thêm</a>*@
+    <button class="btn btn-primary me-1"><i class="fa fa-file-excel" aria-hidden="true"></i> Import từ Excel</button>
+    <button data-bs-toggle="modal" data-bs-target="#addModal" class="btn btn-success"><i class="fa-solid fa-plus"></i> Thêm</button>
+</div>
+<form asp-controller="Category" asp-action="Index" class="d-flex g-3">
+    <div class="flex-grow-1 me-3">
+        <input type="text" class="form-control" id="keyWord" name="keyWord" value="@Model.KeyWord" placeholder="Nhập từ cần tìm">
+    </div>
+    <div class="">
+        <button type="submit" class="btn btn-info mb-3"><i class="fa-solid fa-magnifying-glass"></i> Tìm kiếm</button>
+    </div>
+</form>
+<table class="table table-bordered table-hover">
+    <tr class="table-success text-center">
+        <th>STT</th>
+        <th>Mã danh mục</th>
+        <th>Tên danh mục</th>
+        <th>Thao tác</th>
+    </tr>
+    @if (Model.Categories != null)
+    {
+        int index = Model.PagingInfo.PageSize * (Model.PagingInfo.PageIndex - 1);
+        foreach (var category in Model.Categories)
+        {
+            <tr>
+                <td>@(++index)</td>
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>
+                    @*<a asp-action="Update" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-primary"><i class="fa-solid fa-pencil"></i> Sửa</a>
+            <a asp-action="Delete" asp-controller="Category" asp-route-id="@category.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</a>*@
+                    <button data-bs-toggle="modal" data-bs-target="#updateModal_@category.Id" class="btn btn-primary">
+                        <i class="fa-solid fa-pencil"></i> Sửa</button>
+                    <button data-bs-toggle="modal" data-bs-target="#deleteModal_@category.Id" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Xóa</button>
+                </td>
+            </tr>
+        }
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                @for (int i = 1; i <= Model.PagingInfo.PageCount; i++)
+                {
+                    <li class="page-item @(Model.PagingInfo.PageIndex==i?"active":"")">
+                        <a class="page-link" asp-action="Index" asp-route-pageIndex="@i">@i</a>
+                    </li>
+                }
+
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+
+    }
+    else
+    {
+        <tr>
+            <td colspan="3">Không có danh mục nào cả</td>
+        </tr>
+    }
+
+</table>
+
+@if (!string.IsNullOrEmpty(Model.Message)){
+    <div class="alert alert-primary mt-3">
+        @Model.Message
+    </div>
+
+    <!-- Modal Thông báo -->
+    <div class="modal fade" id="noticeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    @Model.Message
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Modal Add -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <partial name="_Create" model="@Model" />
+    </div>
+</div>
+<!--End Modal-->
+@if (Model.Categories != null)
+{
+    foreach (var cat in Model.Categories)
+    {
+        <!-- Modal Update -->
+        <div class="modal fade" id="updateModal_@cat.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form asp-action="Update" asp-controller="Category" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật danh mục</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="nameCategory" class="form-label">Tên danh mục</label>
+                                <input type="text" class="form-control" asp-for="Request.Name" value="@cat.Name">
+                                <input type="hidden" class="form-control" asp-for="Request.Id" value="@cat.Id">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
+                            <button type="submit" class="btn btn-primary">Đồng ý</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--End Modal-->
+        <!-- Modal Delete -->
+        <div class="modal fade" id="deleteModal_@cat.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form asp-action="Delete" asp-controller="Category" method="post">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Xóa danh mục</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" asp-for="Request.Id" value="@cat.Id" />
+                            <p>Bạn có chắc là muốn xóa danh mục @cat.Name này không?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
+                            <button type="submit" class="btn btn-primary">Đồng ý</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!--End Modal-->
+    }
+}

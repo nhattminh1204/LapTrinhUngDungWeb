@@ -1,5 +1,5 @@
-using Product_Management.Models;
 using Microsoft.EntityFrameworkCore;
+using Product_Management.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

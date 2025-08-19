@@ -1,29 +1,29 @@
-﻿@using Product_Management.ViewModel
+@using Product_Management.ViewModel
 @model CategoryViewModel
 
-<div class="modal fade" id="deleteModal_@Model.Response.Id" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog">
-        <form asp-action="Delete" asp-controller="Category" method="post">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Xác nhận xóa danh mục sản phẩm</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <p>Bạn có chắc muốn xóa danh mục này không?</p>
-                        <div class="mb-3">
-                            <label class="form-label fw-bold text-dark">Tên danh mục:</label>
-                            <input type="text" class="form-control" value="@Model.Response.Name" readonly />
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" asp-for="Request.Id" value="@Model.Response.Id" />
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
-                    <button type="submit" class="btn btn-primary">Đồng ý</button>
-                </div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Xác nhận xóa danh mục</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-        </form>
+            <div class="modal-body">
+                <p>Bạn có chắc chắn muốn xóa danh mục <strong id="deleteCategoryName"></strong> không?</p>
+                <div id="productsList" style="display: none;">
+                    <p class="text-warning"><strong>Cảnh báo:</strong> Danh mục này đang có các sản phẩm sau:</p>
+                    <ul id="productsInCategory" class="list-group mb-3"></ul>
+                    <p class="text-danger"><strong>Tất cả sản phẩm này sẽ bị xóa cùng với danh mục!</strong></p>
+                </div>
+                <p class="text-danger">Hành động này không thể hoàn tác!</p>
+            </div>
+            <div class="modal-footer">
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" id="deleteCategoryId" name="id" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

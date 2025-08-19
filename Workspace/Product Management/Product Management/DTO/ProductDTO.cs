@@ -1,8 +1,4 @@
-﻿using Product_Management.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Product_Management.DTO
+﻿namespace Product_Management.DTO
 {
     public class ProductDTO
     {

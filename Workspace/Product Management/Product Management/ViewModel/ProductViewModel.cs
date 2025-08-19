@@ -9,6 +9,6 @@ namespace Product_Management.ViewModel
 
         public ProductDTO Request { get; set; }
         public ProductDTO Response { get; set; }
-        
+
     }
 }

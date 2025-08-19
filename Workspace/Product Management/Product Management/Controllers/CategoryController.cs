@@ -8,108 +8,145 @@ namespace Product_Management.Controllers
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public CategoryController(AppDbContext context)
+        public CategoryController(AppDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
-        public IActionResult Index(string keyword = "", int pageSize = 5, int pageIndex = 1)
+        public IActionResult Index(int pageIndex = 1, int pageSize = 5)
         {
-            var model = new CategoryViewModel();
-            model.PageSize = pageSize;
-            model.PageIndex = pageIndex;
-
-            IQueryable<Category> list = _context.Categories;
-
-            if (!string.IsNullOrEmpty(keyword))
+            var model = new CategoryViewModel
             {
-                list = list.Where(e => e.Name.Contains(keyword));
-                
-            }
-            model.TotalItem = list.Count();
-            model.Categories = list
-                .Skip((pageIndex - 1) * pageSize)
-                .Take(pageSize)
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                TotalItem = _context.Categories.Count(),
+            };
+
+            model.Categories = _context.Categories
+                .Skip((model.PageIndex - 1) * model.PageSize)
+                .Take(model.PageSize)
                 .Select(e => new CategoryDTO
-            {
-                Id = e.Id,
-                Name = e.Name,
-            }).ToList();
-
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                }).ToList();
             return View(model);
         }
 
-
-        [HttpGet]
-        public IActionResult Create()
+        public IActionResult LoadCategory(string keyword = "", int pageIndex = 1, int pageSize = 5)
         {
-            return View();
+            IQueryable<Category> query = _context.Categories;
+            
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(e => e.Name.Contains(keyword));
+            }
+
+            var model = new CategoryViewModel
+            {
+                PageSize = pageSize,
+                PageIndex = pageIndex,
+                TotalItem = query.Count(),
+            };
+
+            model.Categories = query
+                .Skip((model.PageIndex - 1) * model.PageSize)
+                .Take(model.PageSize)
+                .Select(e => new CategoryDTO
+                {
+                    Id = e.Id,
+                    Name = e.Name,
+                }).ToList();
+
+            return PartialView("_List", model);
         }
+
 
         [HttpPost]
         public IActionResult Create(CategoryViewModel model)
         {
-            var cate = new Category();
-            cate.Name = model.Request.Name;
-            _context.Categories.Add(cate);
+            var category = new Category
+            {
+                Name = model.Request.Name,
+            };
+            _context.Categories.Add(category);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
-        public IActionResult Update(int id)
+        public IActionResult GetCategory(int id)
         {
-            var cat = _context.Categories.Where(e => e. Id == id).Select(e => new CategoryDTO
+            var category = _context.Categories.Find(id);
+            if (category == null) return NotFound();
+            
+            var model = new CategoryViewModel
             {
-                Id = e.Id,
-                Name = e.Name,
-            }).FirstOrDefault();
-            var CategoryViewModel = new CategoryViewModel();
-            CategoryViewModel.Response = cat;
-            return View(CategoryViewModel);
+                Response = new CategoryDTO
+                {
+                    Id = category.Id,
+                    Name = category.Name,
+                }
+            };
+            return PartialView("_Update", model);
         }
 
         [HttpPost]
         public IActionResult Update(CategoryViewModel model)
         {
-            var cat = _context.Categories.Where(e => e.Id == model.Request.Id).FirstOrDefault();
-            if (cat != null)
-            {
-                cat.Name = model.Request.Name;
-                _context.SaveChanges();
-            }
-            return RedirectToAction("Index");
+            var category = _context.Categories.Find(model.Request.Id);
+            if (category == null) return NotFound();
+
+            category.Name = model.Request.Name;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet]        
-        public IActionResult Delete(int id) 
+        [HttpGet]
+        public IActionResult GetCategoryProducts(int id)
         {
-            var cat = _context.Categories.Where(e => e.Id == id).Select(e => new CategoryDTO
-            {
-                Id = e.Id,
-                Name = e.Name,
-            }).FirstOrDefault();
-            var CategoryViewModel = new CategoryViewModel();
-            CategoryViewModel.Response = cat;
-            return View(CategoryViewModel);
+            var category = _context.Categories.Find(id);
+            if (category == null) return NotFound();
+
+            var products = _context.Products
+                .Where(p => p.CategoryId == id)
+                .Select(p => p.Name)
+                .ToList();
+
+            return Json(new { categoryName = category.Name, products = products });
         }
 
         [HttpPost]
-        public IActionResult Delete(CategoryViewModel model)
-        {   
-            var cat = _context.Categories.Where(e => e.Id == model.Request.Id).FirstOrDefault();
-            if (cat != null)
+        public IActionResult Delete(int id)
+        {
+            var category = _context.Categories.Find(id);
+            if (category == null) return NotFound();
+
+            // Xóa tất cả sản phẩm thuộc danh mục
+            var products = _context.Products.Where(p => p.CategoryId == id).ToList();
+            if (products.Any())
             {
-                var products = _context.Products.Where(e => e.CategoryId == model.Request.Id).ToList();
-                if (products.Count > 0)
+                // Xóa ảnh của các sản phẩm
+                foreach (var product in products)
                 {
-                    _context.Products.RemoveRange(products);
+                    if (!string.IsNullOrEmpty(product.image))
+                    {
+                        var imagePath = Path.Combine(_environment.WebRootPath, product.image.TrimStart('/'));
+                        if (System.IO.File.Exists(imagePath))
+                        {
+                            System.IO.File.Delete(imagePath);
+                        }
+                    }
                 }
-                _context.Categories.Remove(cat);
-                _context.SaveChanges();
+                _context.Products.RemoveRange(products);
             }
-            return RedirectToAction("Index");
+
+            _context.Categories.Remove(category);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

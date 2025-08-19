@@ -1,0 +1,70 @@
+﻿﻿@using Product_Management.ViewModel
+@model ProductViewModel
+
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Update" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cập nhật sản phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="idCategory" class="form-label">
+                            Danh mục sản phẩm
+                        </label>
+                        <select id="idCategory" asp-for="Request.CategoryId" class="form-control">
+                            @if (Model.Categories != null)
+                            {
+                                foreach (var cat in Model.Categories)
+                                {
+                                    <option value="@cat.Id" selected="@(cat.Id == Model.Response?.CategoryId)">
+                                        @cat.Name
+                                    </option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nameProduct" class="form-label">Tên sản phẩm</label>
+                        <input type="text" class="form-control" id="nameProduct" value="@Model.Response?.Name" asp-for="Request.Name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="descriptionProduct" class="form-label">Mô tả</label>
+                        <textarea class="form-control" id="descriptionProduct" rows="3" asp-for="Request.Description">@Model.Response?.Description</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="priceProduct" class="form-label">Giá sản phẩm</label>
+                        <input type="number" step="0.1" class="form-control" id="priceProduct" value="@Model.Response?.Price" asp-for="Request.Price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="priceProduct" class="form-label">Số lượng sản phẩm</label>
+                        <input type="number" class="form-control" id="quantityProduct" value="@Model.Response?.Quantity" asp-for="Request.Quantity">
+                    </div>
+                    <div class="mb-3">
+                        <label for="manuDateProduct" class="form-label">Ngày sản xuất</label>
+                        <input type="date" class="form-control" id="manuDateProduct" value="@Model.Response?.ManuDate.ToString("yyyy-MM-dd")" asp-for="Request.ManuDate">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Hình đại diện</label>
+                        @if (!string.IsNullOrEmpty(Model.Response?.image))
+                        {
+                            <div class="mb-2">
+                                <img src="@Model.Response.image" style="width:100px; height:100px; object-fit:cover; border-radius:5px;" alt="Ảnh hiện tại" />
+                                <small class="d-block text-muted">Ảnh hiện tại</small>
+                            </div>
+                        }
+                        <input type="file" accept="image/*" class="form-control" asp-for="Request.formFileImage">
+                        <small class="form-text text-muted">Chọn ảnh mới để thay thế (không bắt buộc)</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="productId" value="@Model.Response?.Id" asp-for="Request.Id" />
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
+                    <button type="submit" class="btn btn-primary">Đồng ý</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

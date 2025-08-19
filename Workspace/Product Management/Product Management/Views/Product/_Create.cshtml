@@ -1,49 +1,63 @@
 ﻿@using Product_Management.ViewModel
 @model ProductViewModel
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm mới sản phẩm</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thêm mới sản phẩm</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
 
-        <div class="modal-body">
-            <label class="form-label fw-bold text-dark">Danh mục</label>
-            <select asp-for="Request.CategoryId" class="form-select">
-                @if (Model.Categories != null)
-                {
-                    foreach (var cat in Model.Categories)
-                    {
-                        <option value="@cat.Id">@cat.Name</option>
-                    }
-                }
-            </select>
-            <br />
-            <div class="mb-3">
-                <label class="form-label fw-bold text-dark">Tên sản phẩm <span class="text-danger">*</span></label>
-                <input asp-for="Request.Name" class="form-control" type="text" placeholder="Nhập tên danh mục..." required />
+                <div class="modal-body">
+                    <label class="form-label fw-bold text-dark">Danh mục</label>
+                    <select asp-for="Request.CategoryId" class="form-select">
+                        @if (Model.Categories != null)
+                        {
+                            foreach (var cat in Model.Categories)
+                            {
+                                <option value="@cat.Id">@cat.Name</option>
+                            }
+                        }
+                    </select>
+                    <br />
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">Tên sản phẩm <span class="text-danger">*</span></label>
+                        <input asp-for="Request.Name" class="form-control" type="text" placeholder="Nhập tên sản phẩm..." required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">Mô tả</label>
+                        <textarea asp-for="Request.Description" class="form-control" rows="3" placeholder="Nhập mô tả sản phẩm..."></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">Giá</label>
+                        <input asp-for="Request.Price" class="form-control" type="number" step="1" placeholder="Nhập giá sản phẩm..." required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">Số lượng</label>
+                        <input asp-for="Request.Quantity" class="form-control" type="number" placeholder="Nhập số lượng..." required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">Ngày sản xuất</label>
+                        <input asp-for="Request.ManuDate" class="form-control" type="date" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-bold text-dark">Hình ảnh</label>
+                        <input asp-for="Request.formFileImage" class="form-control" type="file" accept="image/*" placeholder="Nhập tên danh mục..." required />
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
+                    <button type="submit" class="btn btn-primary">Đồng ý</button>
+                </div>
             </div>
-
-            <div class="mb-3">
-                <label class="form-label fw-bold text-dark">Giá</label>
-                <input asp-for="Request.Price" class="form-control" type="nubmer" step="1" " placeholder="Nhập tên danh mục..." required />
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label fw-bold text-dark">Số lượng</label>
-                <input asp-for="Request.Quantity" class="form-control" type="nubmer" step="0.1" placeholder="Nhập tên danh mục..." required />
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label fw-bold text-dark">Hình ảnh</label>
-                <input asp-for="Request.formFileImage" class="form-control" type="file" accept="image/*" placeholder="Nhập tên danh mục..." required />
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bỏ qua</button>
-            <button type="submit" class="btn btn-primary">Đồng ý</button>
-        </div>
+        </form>
     </div>
-</form>
+</div>
